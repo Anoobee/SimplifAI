@@ -3,7 +3,7 @@ import { FaUserCircle, FaBars } from 'react-icons/fa';
 
 const Header = () => {
   return (
-    <Box bg="gray.100" p={4} top='0'>
+    <Box bg="gray.100" p={4} top='0' width="100%">
       <Flex alignItems="center">
         <IconButton
           icon={<FaBars />}

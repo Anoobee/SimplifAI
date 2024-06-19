@@ -8,9 +8,9 @@ export default defineConfig({
     react(),
     VitePWA({
       manifest: {
-        name: 'Vite-React-PWA-demo',
-        short_name: 'Vite-React-PWA',
-        description: 'PWA built with React and Vite',
+        name: 'SimplifAI',
+        short_name: 'SimplifAI',
+        description: 'Understanding Medical Report made easy',
         start_url: '/',
         display: 'standalone',
         background_color: '#ffffff',

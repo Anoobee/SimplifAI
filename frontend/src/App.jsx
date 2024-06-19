@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import HomePage from "./Pages/HomePage";
 import ChatPage from "./Pages/ChatPage";
 import { Global } from "@emotion/react";
+import LoginPage from "./Pages/LoginPage";
 
 const GlobalStyles = () => (
   <Global
@@ -26,7 +27,8 @@ const App = () => {
       <GlobalStyles />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<HomePage />} />
+          <Route path="/" element={<LoginPage/>} />
+          <Route path="/login" element={<LoginPage/>} />
           <Route path="/home" element={<HomePage />} />
           <Route path="/chat" element={<ChatPage />} />
         </Routes>
