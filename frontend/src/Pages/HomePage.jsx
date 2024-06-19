@@ -21,7 +21,7 @@ const HomePage = () => {
         justifyContent="center"
       >
         <VStack spacing={4} align="stretch" bg="white" p={4} zIndex="1000">
-          <Box position="sticky" top={0} zIndex={2}>
+          <Box position="sticky" top={0} zIndex={2} width="100%">
             <Header />
           </Box>
           <Box>
@@ -34,7 +34,7 @@ const HomePage = () => {
           <Box pb={10}>
             <ActionButtons />
           </Box>
-          <Box position="sticky" bottom={0} zIndex={2}>
+          <Box position="sticky" bottom={0} zIndex={2} width="100%">
             <FooterNav />
           </Box>
         </VStack>
