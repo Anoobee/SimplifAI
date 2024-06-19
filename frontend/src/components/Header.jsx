@@ -1,4 +1,3 @@
-import React from 'react';
 import { Box, Flex, IconButton, Heading, Spacer } from '@chakra-ui/react';
 import { FaUserCircle, FaBars } from 'react-icons/fa';
 

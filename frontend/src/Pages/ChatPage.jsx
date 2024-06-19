@@ -5,13 +5,9 @@ import UserCard from "../components/UserCard";
 import ChatList from "../components/ChatList";
 import ActionButtons from "../components/ActionButtons";
 import FooterNav from "../components/FooterNav";
+import ChatUI from "../components/ChatUI";
 
-const HomePage = () => {
-  const chatItems = [
-    { title: "Diabities", time: "8:21-8:25 AM", user: "Anup Aryal" },
-    { title: "Diabities", time: "8:21-8:25 AM", user: "Anup Aryal" },
-  ];
-
+const ChatPage = () => {
   return (
     <div>
       <Flex
@@ -25,14 +21,7 @@ const HomePage = () => {
             <Header />
           </Box>
           <Box>
-            <UserCard />
-          </Box>
-          <Box flex="1" overflowY="auto" p={4}>
-            <ChatList title="Today" items={chatItems} />
-            <ChatList title="Yesterday" items={chatItems} />
-          </Box>
-          <Box pb={10}>
-            <ActionButtons />
+            <ChatUI />
           </Box>
           <Box position="sticky" bottom={0} zIndex={2}>
             <FooterNav />
@@ -43,4 +32,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default ChatPage;
