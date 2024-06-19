@@ -1,7 +1,8 @@
-from rest_framework.serializers import serializers
+from rest_framework import serializers
+from rest_framework import routers, serializers, viewsets
 from .models import Chats, Report
 
-class ChatsSeializer(serializers.ModelSerializer):
+class ChatsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Chats
         fields = "__all__"
