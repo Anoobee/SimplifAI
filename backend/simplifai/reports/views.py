@@ -14,6 +14,8 @@ from rest_framework import status
 from .qa import QA
 import argparse
 
+qa = QA()
+
 def parse_arguments():
     parser = argparse.ArgumentParser(description="Ask questions to your documents.")
     parser.add_argument("--no-rag", action='store_true', help="Get your answer without RAG")
@@ -41,14 +43,28 @@ class ReportView(APIView):
             text = extract_text_from_image(image_path)
 
             print(text)
-
+            
             ReportText.objects.create(report=report, text=text)
+            
+            text  = text + "\n Summarize the above text "
 
-            return Response(report_serializer.data, status=status.HTTP_201_CREATED)
-        else:
-            return Response(report_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+            response = qa._ask_non_rag(text)
+
+            llm_response = {
+                "text": response,
+                "sender": "SimplifAI",
+                "isUser": False
+            }
+
+            response_serializer = ChatsSerializer(data = llm_response)
+            if response_serializer.is_valid():
+                response_serializer.save()
+                return JsonResponse(response_serializer.data, status=201)
+            else:
+                return JsonResponse(response_serializer.errors, status=400)
 
 
+ 
 
 def get_report_lists(request):
     if request.method == 'GET':
@@ -79,7 +95,7 @@ def chat_message(request):
             return JsonResponse(serializer.errors, status=400)
    
         # args = parse_arguments()
-        qa = QA()
+        
 
         query = body['text']
         response = qa._ask_non_rag(query)
