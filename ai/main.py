@@ -1,6 +1,6 @@
 import argparse
 
-from src.qa import QA
+from SimplifAI.backend.simplifai.reports.qa import QA
 
 def parse_arguments():
     parser = argparse.ArgumentParser(description="Ask questions to your documents.")

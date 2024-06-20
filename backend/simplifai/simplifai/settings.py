@@ -42,9 +42,13 @@ INSTALLED_APPS = [
 
     'rest_framework',
     'reports.apps.ReportsConfig',
+    'corsheaders',
+
 ]
 
 MIDDLEWARE = [
+
+    'corsheaders.middleware.CorsMiddleware',
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -53,6 +57,9 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
+
+CORS_ORIGIN_ALLOW_ALL = True
+
 
 ROOT_URLCONF = "simplifai.urls"
 
@@ -124,6 +131,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 STATIC_URL = "backend/reports/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, 'reports/media')
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1c7e1bbb9668bc60d2cbcfeceb850b226ea369e6
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]

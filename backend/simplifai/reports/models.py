@@ -3,7 +3,7 @@ import uuid
 
 # Create your models here.
 class Chats(models.Model):
-    chat_id = models.CharField(max_length=100)
+    # chat_id = models.CharField(max_length=100)
     text = models.TextField()
     timestamp = models.DateTimeField(auto_now=True)
     sender = models.CharField(max_length=100)
@@ -20,6 +20,15 @@ class Report(models.Model):
     def __str__(self):
         return str(self.id)
     
+class ReportText(models.Model):
+    report = models.ForeignKey(Report, on_delete=models.CASCADE)
+    text = models.TextField()
+    date = models.DateTimeField(auto_now_add=True)
+    
+    def __str__(self):
+        return str(self.report.id)
+
+
 class ReportText(models.Model):
     report = models.ForeignKey(Report, on_delete=models.CASCADE)
     text = models.TextField()
