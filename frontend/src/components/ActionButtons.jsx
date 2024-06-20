@@ -25,13 +25,13 @@ const ActionButtons = () => {
   };
   const handleCaptureClick = () => {
     captureInputRef.current.click();
-  }
+  };
 
   const handleAPI = () => {
     const formData = new FormData();
-    formData.append("image", image);
+    formData.append("plot", image);
     axios
-      .post("http://localhost:5000/uploadReport", formData)
+      .post("http://192.168.193.121:8000/upload_report/", formData)
       .then((res) => {
         console.log(res);
       })

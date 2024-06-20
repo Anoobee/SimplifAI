@@ -8,7 +8,6 @@ import {
   FormLabel,
   Heading,
   Input,
-  Stack,
   VStack,
   Text,
 } from "@chakra-ui/react";
@@ -19,8 +18,8 @@ const LoginPage = () => {
     <Flex
       direction="column"
       height="100vh"
-      justify="center"
-      align="center"
+      justifyContent="center"
+      alignItems="center"
       width="100%"
     >
       <Box
@@ -49,9 +48,9 @@ const LoginPage = () => {
             Login
           </Button>
           <Link to="/home">
-          <Button colorScheme="gray" variant="outline" size="lg" width="100%">
-            Login as Guest
-          </Button>
+            <Button colorScheme="gray" variant="outline" size="lg" width="100%">
+              Login as Guest
+            </Button>
           </Link>
         </VStack>
         <Text mt={4} textAlign="center">

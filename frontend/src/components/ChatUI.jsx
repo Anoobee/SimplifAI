@@ -3,7 +3,7 @@ import ChatMessage from "./ChatMessage";
 import ChatInput from "./ChatInput";
 import { useState } from "react";
 
-const ChatUI = () => {
+const ChatUI = (chatMode) => {
   const [messages, setMessages] = useState([
     {
       id: 1,
@@ -29,6 +29,7 @@ const ChatUI = () => {
         {
           id: messages.length + 1,
           text: newMessage,
+          chatMode: chatMode,
           timestamp: "Just now",
           sender: "Anup Aryal",
           isUser: true,
