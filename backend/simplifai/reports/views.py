@@ -2,6 +2,7 @@ from django.views.decorators.csrf import csrf_exempt
 
 from django.shortcuts import render
 from django.http import JsonResponse
+import json
 
 from .serializers import ReportSerializer, ChatsSerializer
 from .models import Report, Chats
@@ -41,7 +42,17 @@ def get_report_lists(request):
 
 def chat_message(request):
     if request.method == 'POST':
-        serializer = ChatsSerializer(data=request.data)
+        # print(request.body)
+        # return JsonResponse({'message':'got'})
+        json_data = json.loads(request.body)
+        
+        body =  {
+        "chat_id": request.GET.get('chat_id'),
+        "text": request.GET.get('text'),
+        "sender": request.GET.get('sender'),
+        "isUser": request.GET.get('isUser')
+        }
+        serializer = ChatsSerializer(data = json_data)
 
         if serializer.is_valid():
             serializer.save()
@@ -52,7 +63,7 @@ def chat_message(request):
     if request.method == 'GET':
         chats = Chats.objects.all()
         
-        serializer = ChatsSerializer(chats, many=True)
+        serializer = ChatsSerializer(chats, many=True )
 
-        return Response(serializer.data, safe=False)
+        return JsonResponse(serializer.data, safe=False)
 
