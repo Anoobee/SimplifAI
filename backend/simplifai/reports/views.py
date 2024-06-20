@@ -1,4 +1,5 @@
 from django.views.decorators.csrf import csrf_exempt
+from 
 
 from django.shortcuts import render
 from django.http import JsonResponse
@@ -53,6 +54,8 @@ def chat_message(request):
         "isUser": request.GET.get('isUser')
         }
         serializer = ChatsSerializer(data = json_data)
+        
+
 
         if serializer.is_valid():
             serializer.save()
