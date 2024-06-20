@@ -3,8 +3,14 @@
 
 This is our health assistant who was developed to reduce the gap between you and complex medical terminology 
 
-This is using Ollama as the inference engine, and it's running the anoob/simp2 quantized version
 
+## Screenshots
+### Login 
+![App Screenshot](img/login.png)
+### Home
+![App Screenshot](img/home.png)
+### Chat
+![App Screenshot](img/chat.png)
 
 ## Original Creator
 
@@ -17,7 +23,7 @@ This is using Ollama as the inference engine, and it's running the anoob/simp2 q
    - Strong CPU
    
 ## Prerequisites:
-
+This is using Ollama as the inference engine, and it's running the anoob/simp2 quantized version
 
 Install ollama:
 ```
