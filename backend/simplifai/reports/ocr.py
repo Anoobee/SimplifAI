@@ -59,7 +59,8 @@ def get_ocr_result(img_path):
     # Parse resul
     _, txts, _ = parse_result(result)
 
-    print(txts)
-    return txts
+    pure_string = ' '.join(txts)
+    
+    return pure_string
 
 # get_ocr_result('media/hi.png')

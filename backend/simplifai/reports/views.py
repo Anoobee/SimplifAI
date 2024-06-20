@@ -77,7 +77,7 @@ from django.conf import settings
 
 def extract_text_from_image(request):
     if request.method == 'GET':
-        print("Inside extract_text_from_image")
+
         image_path = os.path.join(settings.MEDIA_ROOT, 'hi.png')
-        get_ocr_result(image_path)
-        return JsonResponse({"extracted text": "text"})
+        result = get_ocr_result(image_path)
+        return JsonResponse({"extracted text": result})
