@@ -3,7 +3,7 @@ import uuid
 
 # Create your models here.
 class Chats(models.Model):
-    chat_id = models.CharField(max_length=100)
+    # chat_id = models.CharField(max_length=100)
     text = models.TextField()
     timestamp = models.DateTimeField(auto_now=True)
     sender = models.CharField(max_length=100)

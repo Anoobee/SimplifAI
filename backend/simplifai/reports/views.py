@@ -1,5 +1,5 @@
 from django.views.decorators.csrf import csrf_exempt
-from 
+
 
 from django.shortcuts import render
 from django.http import JsonResponse
@@ -11,6 +11,13 @@ from rest_framework.views import APIView
 from rest_framework.parsers import MultiPartParser, FormParser
 from rest_framework.response import Response
 from rest_framework import status
+from .qa import QA
+import argparse
+
+def parse_arguments():
+    parser = argparse.ArgumentParser(description="Ask questions to your documents.")
+    parser.add_argument("--no-rag", action='store_true', help="Get your answer without RAG")
+    return parser.parse_args()
 
 
 class ReportView(APIView):
@@ -48,20 +55,39 @@ def chat_message(request):
         json_data = json.loads(request.body)
         
         body =  {
-        "chat_id": request.GET.get('chat_id'),
         "text": request.GET.get('text'),
         "sender": request.GET.get('sender'),
         "isUser": request.GET.get('isUser')
         }
         serializer = ChatsSerializer(data = json_data)
         
-
-
         if serializer.is_valid():
             serializer.save()
-            return JsonResponse({'message' : 'Chat saved successfully'}, status=201)
         else:
             return JsonResponse(serializer.errors, status=400)
+   
+        # args = parse_arguments()
+        qa = QA()
+
+        query = body['text']
+        response = qa._ask_non_rag(query)
+
+
+
+        llm_response = {
+        "text": response,
+        "sender": "SimplifAI",
+        "isUser": False
+        }
+
+        response_serializer = ChatsSerializer(data = llm_response)
+        if response_serializer.is_valid():
+            response_serializer.save()
+            return JsonResponse(response_serializer.data, status=201)
+        else:
+            return JsonResponse(response_serializer.errors, status=400)
+
+        
 
     if request.method == 'GET':
         chats = Chats.objects.all()
