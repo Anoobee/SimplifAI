@@ -17,6 +17,7 @@ import os
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
@@ -26,7 +27,7 @@ SECRET_KEY = "django-insecure-(@gb(fdsm)7!kx=xc#*0@5qlw3$^^p*f$mg@5mamuhl4lu#jvt
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -121,11 +122,13 @@ USE_TZ = True
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-STATIC_URL = "static/"
+STATIC_URL = "backend/reports/media/"
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
+
+#BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
