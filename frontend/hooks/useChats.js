@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import apiClient from "../utils/apiClient.js";
+import apiClient from "../utils/api-client";
 
-const useChats = (endpoint) => {
+const useChats = (endpoint = "/chat_message/") => {
   const [chats, setChats] = useState([]);
   const [error, setError] = useState("");
   const [isLoading, setLoading] = useState(false);
+
   const fetchChats = async () => {
     setLoading(true);
     try {
@@ -20,13 +21,12 @@ const useChats = (endpoint) => {
   useEffect(() => {
     fetchChats();
   }, []);
-//   useEffect(() => {
-//     console.log(chats);
-//   }, [chats]);
+
   return {
     chats,
     error,
     isLoading,
+    refetchChats: fetchChats, // Expose fetchChats as refetchChats for manual re-fetching
   };
 };
 
