@@ -75,12 +75,9 @@ from .ocr import get_ocr_result
 import os
 from django.conf import settings
 
-def extract_text_from_image(response):
-    # Use the imported function
-   # original_path =  "/reports/media/439203378_2246428852367381_8682738345992858211_n.png"
-    #image_path = original_path.replace("/reports", ".")
-    if response.method == 'GET':
-        
+def extract_text_from_image(request):
+    if request.method == 'GET':
         print("Inside extract_text_from_image")
-        get_ocr_result('media/hi.png')
+        image_path = os.path.join(settings.MEDIA_ROOT, 'hi.png')
+        get_ocr_result(image_path)
         return JsonResponse({"extracted text": "text"})
