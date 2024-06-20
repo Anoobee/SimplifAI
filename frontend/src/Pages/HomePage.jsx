@@ -8,8 +8,8 @@ import FooterNav from "../components/FooterNav";
 
 const HomePage = () => {
   const chatItems = [
-    { title: "Diabities", time: "8:21-8:25 AM", user: "Anup Aryal" },
-    { title: "Diabities", time: "8:21-8:25 AM", user: "Anup Aryal" },
+    { title: "Thyroid", time: "8:21-8:25 AM", user: "Aashish Karki" },
+    { title: "Diabities", time: "8:21-8:25 AM", user: "Aashish Karki" },
   ];
 
   return (
