@@ -41,10 +41,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
 
     'rest_framework',
-<<<<<<< HEAD
-=======
     'reports.apps.ReportsConfig',
->>>>>>> 0bed02fb799eefd69cb0e4b42c96b1b11ba2293d
 ]
 
 MIDDLEWARE = [
