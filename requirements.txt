@@ -220,3 +220,4 @@ tzdata==2024.1
 urllib3==2.2.2
 visualdl==2.5.3
 Werkzeug==3.0.3
+django-cors-headers
