@@ -6,7 +6,7 @@ from django.http import JsonResponse
 import json
 
 from .serializers import ReportSerializer, ChatsSerializer
-from .models import Report, Chats
+from .models import Report, Chats, ReportText
 from rest_framework.views import APIView
 from rest_framework.parsers import MultiPartParser, FormParser
 from rest_framework.response import Response
@@ -31,11 +31,23 @@ class ReportView(APIView):
     def post(self, request, *args, **kwargs):
         report_serializer = ReportSerializer(data=request.data)
         if report_serializer.is_valid():
-            report_serializer.save()
+            report = report_serializer.save()
+
+            image_path = report.plot.path
+
+            image_path = image_path.replace('/reports/media/', '')
+
+            # Extract text from image
+            text = extract_text_from_image(image_path)
+
+            print(text)
+
+            ReportText.objects.create(report=report, text=text)
 
             return Response(report_serializer.data, status=status.HTTP_201_CREATED)
         else:
             return Response(report_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 
 
 def get_report_lists(request):
@@ -96,3 +108,12 @@ def chat_message(request):
 
         return JsonResponse(serializer.data, safe=False)
 
+
+# Import the function
+from .ocr import get_ocr_result
+import os
+from django.conf import settings
+def extract_text_from_image(image_path):
+    image_path = os.path.join(settings.MEDIA_ROOT, image_path)
+    result = get_ocr_result(image_path)
+    return result
