@@ -28,7 +28,7 @@ class ReportView(APIView):
 
             image_path = report.plot.path
 
-            image_path = image_path.replace('reports/media/', '')
+            image_path = image_path.replace('/reports/media/', '')
 
             # Extract text from image
             text = extract_text_from_image(image_path)
