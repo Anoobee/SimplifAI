@@ -19,6 +19,15 @@ class Report(models.Model):
 
     def __str__(self):
         return str(self.id)
+    
+class ReportText(models.Model):
+    report = models.ForeignKey(Report, on_delete=models.CASCADE)
+    text = models.TextField()
+    date = models.DateTimeField(auto_now_add=True)
+    
+    def __str__(self):
+        return str(self.report.id)
+
 
     #   id: 1,
     #   text: "Summarize the Report",
