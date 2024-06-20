@@ -28,7 +28,8 @@ const ChatUI = (chatMode) => {
         ...messages,
         {
           id: messages.length + 1,
-          text: newMessage + " " + "Explain me this as if I'm a  " + chatMode,
+          text: newMessage,
+          chatMode: chatMode,
           timestamp: "Just now",
           sender: "Anup Aryal",
           isUser: true,
