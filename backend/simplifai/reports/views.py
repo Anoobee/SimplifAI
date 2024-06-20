@@ -80,45 +80,7 @@ def extract_text_from_image(response):
    # original_path =  "/reports/media/439203378_2246428852367381_8682738345992858211_n.png"
     #image_path = original_path.replace("/reports", ".")
     if response.method == 'GET':
+        
         print("Inside extract_text_from_image")
         get_ocr_result('media/hi.png')
         return JsonResponse({"extracted text": "text"})
-
-#     original_path = "/reports/media/439203378_2246428852367381_8682738345992858211_n.png"
-#     relative_path = original_path.replace("/reports", "")  # Remove '/reports' part
-#     file_system_path = os.path.join(settings.MEDIA_ROOT, relative_path.lstrip('/'))  # Convert to file system path
-
-#     text = get_ocr_result(file_system_path)
-#     return JsonResponse({"extracted text": text})
-
-# # Use the imported function
-# import os
-# from django.conf import settings
-# from django.http import JsonResponse
-# from .ocr.ocr import get_ocr_result
-
-
-# def extract_text_from_image(request):
-#     # Original path from your example
-#     original_path = "/reports/media/439203378_2246428852367381_8682738345992858211_n.png"
-    
-#     # Remove the '/reports' part to get the relative path
-#     relative_path = original_path.replace("/reports/", "")
-    
-#     # Print the relative path for debugging
-#     print(f"Relative path: {relative_path}")
-    
-#     # Construct the full file system path using MEDIA_ROOT
-#     file_system_path = os.path.join(settings.MEDIA_ROOT, relative_path.lstrip('/'))
-    
-#     # Print the file system path for debugging
-#     print(f"File system path: {file_system_path}")
-    
-#     # Check if the constructed path is correct
-#     if not os.path.exists(file_system_path):
-#         return JsonResponse({"error": "File not found"}, status=404)
-    
-#     # Use the imported function to perform OCR
-#     text = get_ocr_result(file_system_path)
-    
-#     return JsonResponse({"extracted text": text})
