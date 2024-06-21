@@ -9,6 +9,7 @@ from langchain.chains import RetrievalQA
 
 from langchain.callbacks.manager import CallbackManager
 # from langchain.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
+from .to_nepali import nepali_translator as to_np
 
 class QA:
     def __init__(self):
@@ -54,10 +55,11 @@ class QA:
         
         Question: {query}
         Helpful Answer:"""
-        response = self.llm.invoke(template)
+        response_eng = self.llm.invoke(template)
+        response_nep = to_np(response_eng)
         
-        print(f'qa : {query}: { response}')
-        return response
+        print(f'qa : {query}: { response_eng}')
+        return response_nep
 
 
 import argparse
