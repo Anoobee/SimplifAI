@@ -47,7 +47,7 @@ class ReportView(APIView):
             ReportText.objects.create(report=report, text=text)
             
             text  = text + "\n Summarize the above text "
-
+            print(f"text: {text}")
             response = qa._ask_non_rag(text)
 
             llm_response = {
@@ -55,7 +55,7 @@ class ReportView(APIView):
                 "sender": "SimplifAI",
                 "isUser": False
             }
-
+            print(f"response: {response}")
             response_serializer = ChatsSerializer(data = llm_response)
             if response_serializer.is_valid():
                 response_serializer.save()
@@ -80,14 +80,25 @@ def chat_message(request):
     if request.method == 'POST':
         # print(request.body)
         # return JsonResponse({'message':'got'})
-        json_data = json.loads(request.body)
+        # json_data = json.loads(request.body)
+
         
+       
+
+        json_data = json.loads(request.body)
+            # email = json_data['email']
+        text = json_data['text']
+        sender = json_data['sender']
+        isUser = json_data['isUser']
+            # fileType = json_data['fileType']
+
         body =  {
-        "text": request.GET.get('text'),
-        "sender": request.GET.get('sender'),
-        "isUser": request.GET.get('isUser')
+        "text": text,
+        "sender": sender,
+        "isUser": isUser
         }
-        serializer = ChatsSerializer(data = json_data)
+        print(f'body : {body}')
+        serializer = ChatsSerializer(data = body)
         
         if serializer.is_valid():
             serializer.save()
@@ -97,8 +108,10 @@ def chat_message(request):
         # args = parse_arguments()
         
 
-        query = body['text']
+        query = text
         response = qa._ask_non_rag(query)
+        print(f'query at: {query}')
+        print(f'response: {response}')
 
 
 

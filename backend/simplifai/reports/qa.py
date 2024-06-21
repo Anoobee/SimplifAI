@@ -46,17 +46,17 @@ class QA:
         response = qa_chain.invoke({"query": query})
         return response["result"]
     def _ask_non_rag(self, query: str) -> str: 
-        # template = f"""Answer the question at the end.
-        # If you don't know the answer, just say that you don't know, don't try to make up an answer.
-        # you can't give a false answer,
-        # Answer in very simple words
-        template=""" {query}"""
+        template = f"""Answer the question at the end.
+        If you don't know the answer, just say that you don't know, don't try to make up an answer.
+        you can't give a false answer,
+        Answer in very simple words
         
-        # Question: {query}
-        # Helpful Answer:"""
+        
+        Question: {query}
+        Helpful Answer:"""
         response = self.llm.invoke(template)
         
-
+        print(f'qa : {query}: { response}')
         return response
 
 
