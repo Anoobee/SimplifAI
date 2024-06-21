@@ -41,6 +41,8 @@ const ChatUI = (chatMode) => {
         timestamp: "Just now",
         sender: "Anup Aryal",
         isUser: true,
+        isDoctor: false,
+        isEnglish: false
       };
 
       // Optionally update local state immediately for better UX
