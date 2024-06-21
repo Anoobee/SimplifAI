@@ -108,7 +108,7 @@ python3 manage.py runserver
 navigate to SimplifAI\frontend
 
 ```
-   npm I
+   npm install
    npm run dev
 ```
 
