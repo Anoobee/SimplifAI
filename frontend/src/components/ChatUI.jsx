@@ -23,16 +23,18 @@ const ChatUI = (chatMode) => {
   //   },
   // ]);
 
-  const { chats, error, isLoading, refetchChats } = useChats();
+  const { chats, error, isLoading, setLoading, refetchChats } = useChats();
+  console.log(isLoading, "loading")
   const [newMessage, setNewMessage] = useState("");
   const [localMessages, setLocalMessages] = useState([]);
   const bottomRef = useRef(null);
 
   useEffect(() => {
     bottomRef.current.scrollIntoView({ behavior: "smooth" });
-  }, []);
+  }, [chats]);
   const handleSend = () => {
     console.log(chats);
+    setLoading(true);
     if (newMessage.trim()) {
       const messageToSend = {
         id: Date.now(), // Using timestamp as a temporary ID
@@ -57,6 +59,7 @@ const ChatUI = (chatMode) => {
         .post("/chat_message/", messageToSend)
         .then((response) => {
           console.log("response is fetched");
+          setLoading(false);
           setLocalMessages([""]);
           refetchChats();
 
@@ -88,7 +91,9 @@ const ChatUI = (chatMode) => {
           value={newMessage}
           onChange={(e) => setNewMessage(e.target.value)}
           onSend={handleSend}
+          isLoading={isLoading}
         />
+        {console.log(isLoading, "loading")}
       </Box>
     </Flex>
   );

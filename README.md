@@ -68,6 +68,10 @@ git lfs install
 
 # update the path for translator in backend/simplifai/reports/to_nepali.py file to the directory where you clone this 
 git clone https://huggingface.co/rujengelal/my_awesome_english_to_nepali_tst
+
+pip install transformers
+pip install torch torchvision torchaudio
+
 ```
 
 Set up a virtual environment and activate it:

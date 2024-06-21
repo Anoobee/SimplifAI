@@ -26,6 +26,7 @@ const useChats = (endpoint = "/chat_message/") => {
     chats,
     error,
     isLoading,
+    setLoading,
     refetchChats: fetchChats, // Expose fetchChats as refetchChats for manual re-fetching
   };
 };
