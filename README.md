@@ -9,12 +9,15 @@ Chat with both querying your doubts.
 
 
 ## Screenshots
-### Login 
+### Login and Home
 ![App Screenshot](img/login.png)
-### Home
 ![App Screenshot](img/home.png)
-### Chat
+### Modes and Chat
+![App Screenshot](img/modes.png)
 ![App Screenshot](img/chat.png)
+### In Nepali
+![App Screenshot](img/nepali_chat1.png)
+![App Screenshot](img/nepali_chat2.png)
 
 ## Original Creator
 
@@ -56,6 +59,15 @@ curl http://localhost:11434/api/generate -d '{
   "model": "anoob/simp2",
   "prompt":"Who are you?"
 }'
+```
+
+If you wish to chat in Nepali
+```
+# Make sure you have git-lfs installed (https://git-lfs.com)
+git lfs install
+
+# update the path for translator in backend/simplifai/reports/to_nepali.py file to the directory where you clone this 
+git clone https://huggingface.co/rujengelal/my_awesome_english_to_nepali_tst
 ```
 
 Set up a virtual environment and activate it:
