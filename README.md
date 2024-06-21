@@ -103,13 +103,20 @@ python3 manage.py runserver
 
 
 
-### Run Frontend
+### Run Frontend in Dev Mode.
 
 navigate to SimplifAI\frontend
 
+```npm I
+   npm run dev
 ```
-npm i
-npm run dev
+
+### Build PWA for your Mobile Devices
+```npm run build
+npx serve dist
 ```
+-Hit the Local Network IP as indicated on the Terminal
+-Save the PWA.
+
 ### Note
 login as guest
