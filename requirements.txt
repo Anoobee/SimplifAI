@@ -152,7 +152,6 @@ paddlepaddle-gpu
 paddleocr>=2.0.1
 opencv-python
 pillow
-
 Django==5.0.6
 djangorestframework==3.15.2
 et-xmlfile==1.1.0
@@ -221,3 +220,4 @@ urllib3==2.2.2
 visualdl==2.5.3
 Werkzeug==3.0.3
 django-cors-headers
+paddle

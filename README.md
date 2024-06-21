@@ -60,7 +60,7 @@ pip3 install -r requirements.txt
 navigate to backend\simplifai
 
 ```
-python manage.py runserver
+python3 manage.py runserver
 ```
 
 
