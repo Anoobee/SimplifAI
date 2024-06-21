@@ -53,3 +53,23 @@ Install all the necessary Python packages from the requirements file:
 ```
 pip3 install -r requirements.txt
 ```
+
+
+### Run Backend
+
+navigate to backend\simplifai
+
+```
+python manage.py runserver
+```
+
+
+
+### Run Frontend
+
+navigate to SimplifAI\frontend
+
+```
+npm i
+npm run dev
+```
