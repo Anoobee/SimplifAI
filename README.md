@@ -26,6 +26,7 @@ This is our health assistant who was developed to reduce the gap between you and
 This is using Ollama as the inference engine, and it's running the anoob/simp2 quantized version
 
 Install ollama:
+
 Option 1:
 ```
 curl -fsSL https://ollama.com/install.sh | sh
@@ -35,7 +36,8 @@ Option 2:
 download ollama from 
 https://ollama.com/download
 
-To pull the required model using Ollama, use the command below:
+
+After installation, to pull the required model using Ollama, use the command below:
 ```
 ollama run anoob/simp2
 ```
