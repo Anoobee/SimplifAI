@@ -56,10 +56,13 @@ class QA:
         Question: {query}
         Helpful Answer:"""
         response_eng = self.llm.invoke(template)
-        response_nep = to_np(response_eng)
+        if isEnglish:
+            response = response_eng
+        else:
+            response = to_np(response_eng)
         
         print(f'qa : {query}: { response_eng}')
-        return response_nep
+        return response
 
 
 import argparse
