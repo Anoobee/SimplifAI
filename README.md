@@ -1,11 +1,21 @@
 
+
 # SimplifAI
 
-This is our health assistant who was developed to reduce the gap between you and complex medical terminology.
+SimplifAI is a versatile medical text interpreter and summarizer designed to make understanding medical information easier for everyone. This app allows users to upload medical reports and receive summaries tailored to three levels of understanding: common, intermediate, and doctor. Users can choose the mode that best suits their needs, ensuring the information is accessible and comprehensible.
 
-Upload report photo, and get summary of it.
+Features:
+- Medical Report Interpretation and summarization.
+- Interactive ChatBot: Ask any medical-related questions and get answers tailored to your selected level of understanding and preferred language.
 
-Chat with both querying your doubts. 
+Modes available:
+- Common: For general public use, with simplified language.
+- Intermediate: For users with some medical knowledge.
+- Doctor: For healthcare professionals needing detailed and technical information.
+
+Languages available:
+- English
+- Nepali
 
 
 ## Screenshots
