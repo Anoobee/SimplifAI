@@ -107,16 +107,18 @@ python3 manage.py runserver
 
 navigate to SimplifAI\frontend
 
-```npm I
+```
+   npm I
    npm run dev
 ```
 
 ### Build PWA for your Mobile Devices
-```npm run build
+```
+npm run build
 npx serve dist
 ```
--Hit the Local Network IP as indicated on the Terminal
--Save the PWA.
+-Hit the Local Network IP as indicated on the Terminal<br>
+-Save the PWA.<br>
 
 ### Note
 login as guest
