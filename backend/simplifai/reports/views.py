@@ -90,13 +90,18 @@ def chat_message(request):
         text = json_data['text']
         sender = json_data['sender']
         isUser = json_data['isUser']
+        isEnglish = json_data['isEnglish']
+        isDoctor = json_data['isDoctor']
             # fileType = json_data['fileType']
 
         body =  {
         "text": text,
         "sender": sender,
-        "isUser": isUser
+        "isUser": isUser,
+        "isEnglish": isEnglish,
+        "isDoctor": isDoctor
         }
+
         print(f'body : {body}')
         serializer = ChatsSerializer(data = body)
         
@@ -109,7 +114,7 @@ def chat_message(request):
         
 
         query = text
-        response = qa._ask_non_rag(query)
+        response = qa._ask_non_rag(query, isDoctor, isEnglish)
         print(f'query at: {query}')
         print(f'response: {response}')
 
