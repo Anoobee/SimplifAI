@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { Box, Flex, VStack, Button, ButtonGroup } from "@chakra-ui/react";
 import Header from "../components/Header";
 import ChatUI from "../components/ChatUI";
@@ -6,7 +6,11 @@ import FooterNav from "../components/FooterNav";
 
 const ChatPage = () => {
   const [chatMode, setChatMode] = useState("Normal");
+  const bottomRef = useRef(null);
 
+  useEffect(() => {
+    bottomRef.current.scrollIntoView({ behavior: "smooth" });
+  }, []);
   return (
     <div>
       <Flex direction="column" minHeight="100vh" alignItems="center" justifyContent="center">
@@ -31,6 +35,7 @@ const ChatPage = () => {
           <Box position="sticky" bottom={0} zIndex={2} width="100%">
             <FooterNav />
           </Box>
+          <div ref={bottomRef} />
         </VStack>
       </Flex>
     </div>

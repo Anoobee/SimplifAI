@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Box, Flex, VStack } from "@chakra-ui/react";
 import Header from "../components/Header";
 import UserCard from "../components/UserCard";
@@ -7,11 +7,20 @@ import ActionButtons from "../components/ActionButtons";
 import FooterNav from "../components/FooterNav";
 
 const HomePage = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const chatItems = [
     { title: "Thyroid", time: "8:21-8:25 AM", user: "Aashish Karki" },
     { title: "Diabities", time: "8:21-8:25 AM", user: "Aashish Karki" },
   ];
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 60000); // 60000 milliseconds = 1 minute
+
+    // Cleanup function to clear the timer if the component unmounts before the timer fires
+    return () => clearTimeout(timer);
+  }, []);
   return (
     <div>
       <Flex
@@ -32,10 +41,10 @@ const HomePage = () => {
             <ChatList title="Yesterday" items={chatItems} />
           </Box>
           <Box pb={10}>
-            <ActionButtons />
+            <ActionButtons setIsLoading={setIsLoading} />
           </Box>
           <Box position="sticky" bottom={0} zIndex={2} width="100%">
-            <FooterNav />
+            <FooterNav isLoading={isLoading} />
           </Box>
         </VStack>
       </Flex>

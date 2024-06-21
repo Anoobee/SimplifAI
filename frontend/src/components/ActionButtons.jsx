@@ -2,7 +2,7 @@ import { useRef, useState, useEffect } from "react";
 import { Box, Button, Flex } from "@chakra-ui/react";
 import axios from "axios";
 
-const ActionButtons = () => {
+const ActionButtons = ({ setIsLoading }) => {
   const [image, setImage] = useState(null);
   const fileInputRef = useRef(null);
   const captureInputRef = useRef(null);
@@ -21,9 +21,11 @@ const ActionButtons = () => {
     }
   };
   const handleUploadClick = () => {
+    setIsLoading(true);
     fileInputRef.current.click();
   };
   const handleCaptureClick = () => {
+    setIsLoading(true);
     captureInputRef.current.click();
   };
 
@@ -31,9 +33,10 @@ const ActionButtons = () => {
     const formData = new FormData();
     formData.append("plot", image);
     axios
-      .post("http://192.168.193.121:8000/upload_report/", formData)
+      .post("http://127.0.0.1:8000/upload_report/", formData)
       .then((res) => {
         console.log(res);
+        setIsLoading(false);
       })
       .catch((err) => {
         console.log(err);

@@ -37,7 +37,7 @@ class ReportView(APIView):
 
             image_path = report.plot.path
 
-            image_path = image_path.replace('/reports/media/', '')
+            # image_path = image_path.replace('/reports/media/', '')
 
             # Extract text from image
             text = extract_text_from_image(image_path)
@@ -131,5 +131,6 @@ import os
 from django.conf import settings
 def extract_text_from_image(image_path):
     image_path = os.path.join(settings.MEDIA_ROOT, image_path)
+    print(image_path)
     result = get_ocr_result(image_path)
     return result
