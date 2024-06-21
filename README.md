@@ -111,3 +111,5 @@ navigate to SimplifAI\frontend
 npm i
 npm run dev
 ```
+### Note
+login as guest
