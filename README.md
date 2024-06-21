@@ -53,6 +53,17 @@ Install all the necessary Python packages from the requirements file:
 ```
 pip3 install -r requirements.txt
 ```
+Then import following libraries
+
+```
+pip3 install Django==5.0.6
+pip3 install djangorestframework==3.15.2
+pip3 install django-cors-headers
+python3 -m pip install paddlepaddle -i https://mirror.baidu.com/pypi/simple
+pip3 install langchain_community
+pip3 install paddleocr
+
+```
 
 
 ### Run Backend

@@ -148,8 +148,8 @@ websockets==12.0
 wrapt==1.16.0
 yarl==1.9.4
 zipp==3.18.2
-paddlepaddle-gpu
-paddleocr>=2.0.1
+# paddlepaddle-gpu
+# paddleocr>=2.0.1
 opencv-python
 pillow
 Django==5.0.6
@@ -219,5 +219,7 @@ tzdata==2024.1
 urllib3==2.2.2
 visualdl==2.5.3
 Werkzeug==3.0.3
+Django==5.0.6
+djangorestframework==3.15.2
 django-cors-headers
 paddle
