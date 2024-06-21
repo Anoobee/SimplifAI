@@ -25,7 +25,11 @@ Chat with both querying your doubts.
 
    - 8GB RAM
    - Strong CPU
-   
+## Demo,Instructions And Slides
+
+- [Slides](https://drive.google.com/file/d/1FcLwucSfjVWpzxPDvSBgjqnv9nEvJqhi/view?usp=sharing)
+- [Instruction](https://drive.google.com/file/d/1ky-g7-DsTIYZH7xomxCEcHgeHvzBID0B/view?usp=sharing)
+- [Demo](https://drive.google.com/file/d/1tjwzc149nA4Bt4MDQ6evVmCv5K6UApwY/view?usp=sharing)
 ## Prerequisites:
 This is using Ollama as the inference engine, and it's running the anoob/simp2 quantized version
 
