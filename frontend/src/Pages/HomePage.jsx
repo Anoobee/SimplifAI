@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Box, Flex, VStack } from "@chakra-ui/react";
+import { Box, Flex, VStack, Button, ButtonGroup } from "@chakra-ui/react";
 import Header from "../components/Header";
 import UserCard from "../components/UserCard";
 import ChatList from "../components/ChatList";
@@ -8,6 +8,8 @@ import FooterNav from "../components/FooterNav";
 
 const HomePage = () => {
   const [isLoading, setIsLoading] = useState(false);
+  const [chatMode, setChatMode] = useState("Normal");
+  const [isEnglish, setIsEnglish] = useState(true);
   const chatItems = [
     { title: "Thyroid", time: "8:21-8:25 AM", user: "Aashish Karki" },
     { title: "Diabities", time: "8:21-8:25 AM", user: "Aashish Karki" },
@@ -40,9 +42,54 @@ const HomePage = () => {
             <ChatList title="Today" items={chatItems} />
             <ChatList title="Yesterday" items={chatItems} />
           </Box>
-          <Box pb={10}>
-            <ActionButtons setIsLoading={setIsLoading} />
+          <Box pb={1}>
+            <ActionButtons setIsLoading={setIsLoading} chatMode={chatMode} isEnglish={isEnglish} />
           </Box>
+          <ButtonGroup
+              variant="outline"
+              spacing="6"
+              mb={4}
+              alignSelf="center"
+            >
+              <Button
+                colorScheme={chatMode === "Layman" ? "teal" : "gray"}
+                onClick={() => setChatMode("Layman")}
+              >
+                Layman
+              </Button>
+              <Button
+                colorScheme={chatMode === "Normal" ? "teal" : "gray"}
+                onClick={() => setChatMode("Normal")}
+              >
+                Normal
+              </Button>
+              <Button
+                colorScheme={chatMode === "Doctor" ? "teal" : "gray"}
+                onClick={() => setChatMode("Doctor")}
+              >
+                Doctor
+              </Button>
+            </ButtonGroup>
+            <ButtonGroup
+              variant="outline"
+              spacing="6"
+              mb={4}
+              alignSelf="center"
+            >
+              <Button
+                colorScheme={isEnglish === true ? "teal" : "gray"}
+                onClick={() => setIsEnglish(true)}
+              >
+                English
+              </Button>
+              <Button
+                colorScheme={isEnglish === false ? "teal" : "gray"}
+                onClick={() => setIsEnglish(false)}
+              >
+                Nepali
+              </Button>
+            </ButtonGroup>
+
           <Box position="sticky" bottom={0} zIndex={2} width="100%">
             <FooterNav isLoading={isLoading} />
           </Box>

@@ -30,8 +30,53 @@ class ReportView(APIView):
         serializer = ReportSerializer(reports, many=True)
         return Response(serializer.data)
 
+    # def post(self, request, *args, **kwargs):
+    #     report_serializer = ReportSerializer(data=request.data)
+    #     if report_serializer.is_valid():
+    #         report = report_serializer.save()
+
+    #         image_path = report.plot.path
+
+    #         # image_path = image_path.replace('/reports/media/', '')
+
+    #         # Extract text from image
+    #         text = extract_text_from_image(image_path)
+
+    #         print(text)
+            
+    #         ReportText.objects.create(report=report, text=text)
+            
+    #         text  = text + "\n Summarize the above text "
+    #         print(f"text: {text}")
+    #         Doctor = False
+    #         English = True
+    #         response = qa._ask_non_rag(text, Doctor, English)
+
+    #         llm_response = {
+    #             "text": response,
+    #             "sender": "SimplifAI",
+    #             "isUser": False
+    #         }
+    #         print(f"response: {response}")
+    #         response_serializer = ChatsSerializer(data = llm_response)
+    #         if response_serializer.is_valid():
+    #             response_serializer.save()
+    #             return JsonResponse(response_serializer.data, status=201)
+    #         else:
+    #             return JsonResponse(response_serializer.errors, status=400)
+
     def post(self, request, *args, **kwargs):
-        report_serializer = ReportSerializer(data=request.data)
+        plot_image = request.data.get('plot')
+
+        body = {
+            'plot': plot_image
+        }
+
+        isDoctor = request.data.get('isDoctor') == 'True'
+        isEnglish = request.data.get('isEnglish') == 'True'
+
+
+        report_serializer = ReportSerializer(data= body)
         if report_serializer.is_valid():
             report = report_serializer.save()
 
@@ -42,13 +87,23 @@ class ReportView(APIView):
             # Extract text from image
             text = extract_text_from_image(image_path)
 
-            print(text)
-            
+            body =  {
+                "text": text,
+                "sender": "Aashish",
+                "isUser": True,
+            }
+
+            query_serializer = ChatsSerializer(data = body)
+            if query_serializer.is_valid():
+                query_serializer.save()
+            else:
+                return JsonResponse(query_serializer.errors, status=400)
+
             ReportText.objects.create(report=report, text=text)
-            
-            text  = text + "\n Summarize the above text "
+
+            text  = text + "\n Interpret and Summarize the above text"
             print(f"text: {text}")
-            response = qa._ask_non_rag(text)
+            response = qa._ask_non_rag(text , isDoctor, isEnglish)
 
             llm_response = {
                 "text": response,
@@ -130,6 +185,7 @@ def chat_message(request):
         if response_serializer.is_valid():
             response_serializer.save()
             return JsonResponse(response_serializer.data, status=201)
+            print('response Sent')
         else:
             return JsonResponse(response_serializer.errors, status=400)
 

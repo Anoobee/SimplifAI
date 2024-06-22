@@ -5,7 +5,7 @@ import { useEffect, useState, useRef } from "react";
 import useChats from "../../hooks/useChats";
 import apiClient from "../../utils/api-client";
 
-const ChatUI = (chatMode) => {
+const ChatUI = ({chatMode, isEnglish}) => {
   // const [messages, setMessages] = useState([
   //   {
   //     id: 1,
@@ -24,7 +24,7 @@ const ChatUI = (chatMode) => {
   // ]);
 
   const { chats, error, isLoading, setLoading, refetchChats } = useChats();
-  console.log(isLoading, "loading")
+  console.log(isLoading, "loading");
   const [newMessage, setNewMessage] = useState("");
   const [localMessages, setLocalMessages] = useState([]);
   const bottomRef = useRef(null);
@@ -32,19 +32,26 @@ const ChatUI = (chatMode) => {
   useEffect(() => {
     bottomRef.current.scrollIntoView({ behavior: "smooth" });
   }, [chats]);
+
+  useEffect(() => {
+    bottomRef.current.scrollIntoView({ behavior: "smooth" });
+  }, [isLoading]);
+
+
   const handleSend = () => {
     console.log(chats);
+    console.log(isEnglish, "english");
+    console.log(chatMode, "chatmode");
     setLoading(true);
     if (newMessage.trim()) {
       const messageToSend = {
         id: Date.now(), // Using timestamp as a temporary ID
         text: newMessage,
-        chatMode: chatMode,
         timestamp: "Just now",
         sender: "Anup Aryal",
         isUser: true,
-        isDoctor: false,
-        isEnglish: false
+        isDoctor: chatMode === "Doctor" ? true : false,
+        isEnglish: isEnglish,
       };
 
       // Optionally update local state immediately for better UX
@@ -90,7 +97,7 @@ const ChatUI = (chatMode) => {
         <ChatInput
           value={newMessage}
           onChange={(e) => setNewMessage(e.target.value)}
-          onSend={handleSend}
+          handleSend={handleSend}
           isLoading={isLoading}
         />
         {console.log(isLoading, "loading")}

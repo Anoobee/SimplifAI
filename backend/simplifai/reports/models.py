@@ -10,7 +10,7 @@ class Chats(models.Model):
     isUser = models.BooleanField()
     date = models.DateTimeField(auto_now_add=True)
     def __str__(self):
-        return str(self.chat_id)
+        return str(self.text)
     
 class Report(models.Model):
     id = models.UUIDField(default=uuid.uuid4, primary_key= True, editable=False)

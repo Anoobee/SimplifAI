@@ -2,7 +2,7 @@ import { useRef, useState, useEffect } from "react";
 import { Box, Button, Flex } from "@chakra-ui/react";
 import axios from "axios";
 
-const ActionButtons = ({ setIsLoading }) => {
+const ActionButtons = ({ setIsLoading, chatMode, isEnglish }) => {
   const [image, setImage] = useState(null);
   const fileInputRef = useRef(null);
   const captureInputRef = useRef(null);
@@ -32,11 +32,17 @@ const ActionButtons = ({ setIsLoading }) => {
   const handleAPI = () => {
     const formData = new FormData();
     formData.append("plot", image);
+    formData.append("isDoctor", chatMode == "Doctor" ? "True" : "False");
+    formData.append("isEnglish", isEnglish == true ? "True" : "False");
+    console.log(formData);
     axios
-      .post("http://127.0.0.1:8000/upload_report/", formData)
+      // .post("http://127.0.0.1:8000/upload_report/", formData)
+      .post("http://192.168.1.10:8000/upload_report/", formData)
       .then((res) => {
         console.log(res);
-        setIsLoading(false);
+        setTimeout(() => {
+          setIsLoading(false);
+        }, 15000);
       })
       .catch((err) => {
         console.log(err);

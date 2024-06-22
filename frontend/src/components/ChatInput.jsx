@@ -1,7 +1,7 @@
 import { Box, Flex, Input, IconButton, Spinner } from "@chakra-ui/react";
 import { FaPaperPlane } from "react-icons/fa";
 
-const ChatInput = ({ value, onChange, onSend, isLoading }) => {
+const ChatInput = ({ value, onChange, handleSend, isLoading }) => {
   return (
     <Box>
       <Flex p={4} align="center" bg="white" boxShadow="md">
@@ -21,7 +21,7 @@ const ChatInput = ({ value, onChange, onSend, isLoading }) => {
       />:<IconButton
       icon={<FaPaperPlane />}
       colorScheme="teal"
-      onClick={onSend}
+      onClick={handleSend}
       aria-label="Send message"
     />}
       </Flex>
